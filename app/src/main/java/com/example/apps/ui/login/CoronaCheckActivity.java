@@ -41,7 +41,10 @@ public class CoronaCheckActivity extends AppCompatActivity {
         resultGroup = (RadioGroup) findViewById(R.id.resultradio);
         isolGroup = (RadioGroup) findViewById(R.id.isolradio);
         privGroup = (RadioGroup) findViewById(R.id.privradio);
-        radioGroup.setOnCheckedChangeListener(radioGroupButtonListener);
+        ondoGroup.setOnCheckedChangeListener(radioGroupButtonListener);
+        resultGroup.setOnCheckedChangeListener(radioGroupButtonListener);
+        isolGroup.setOnCheckedChangeListener(radioGroupButtonListener);
+        privGroup.setOnCheckedChangeListener(radioGroupButtonListener);
 
 
                 //제출버튼 누를때 일어나는 곳
@@ -54,9 +57,9 @@ public class CoronaCheckActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), ans[0], Toast.LENGTH_LONG).show();
                     return;
                 }
-                else if(ondoyes.isChecked()||resultyes.isChecked()||isolyes.isChecked()||privyes.isChecked()){
-                    startActivity(intent);
-                    finish();
+                else if(ondo == false || result == false || isol == false || priv == false){
+                    Toast.makeText(getApplicationContext(), "어이 친구 보내주기 어렵겟는데?", Toast.LENGTH_LONG).show();
+                    return;
                 }
                 intent.putExtra("ondo", ondo);
                 intent.putExtra("result", result);
@@ -101,7 +104,5 @@ public class CoronaCheckActivity extends AppCompatActivity {
         }
 
     };
-
-
 
 }

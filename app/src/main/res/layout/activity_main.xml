@@ -68,9 +68,8 @@
         android:id="@+id/btnNFC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="536dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="604dp"
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

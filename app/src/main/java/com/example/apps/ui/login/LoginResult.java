@@ -2,30 +2,29 @@ package com.example.apps.ui.login;
 
 import androidx.annotation.Nullable;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Response;
+import com.android.volley.toolbox.StringRequest;
+
+import java.util.Map;
+
 /**
  * Authentication result : success (user details) or error message.
  */
-class LoginResult {
-    @Nullable
-    private LoggedInUserView success;
-    @Nullable
-    private Integer error;
+public class LoginResult extends StringRequest {
+    final static private String URL = ""; // "http:// 퍼블릭 DSN 주소/Login.php";
+    private Map<String, String> parameters;
 
-    LoginResult(@Nullable Integer error) {
-        this.error = error;
+    public LoginRequest(String userID, String userPassword, Response.Listener<String> listener) {
+        super(Method.POST, URL, listener, null);
+
+        parameters = new HashMap<>();
+        parameters.put("userID", userID);
+        parameters.put("userPassword", userPassword);
     }
 
-    LoginResult(@Nullable LoggedInUserView success) {
-        this.success = success;
-    }
-
-    @Nullable
-    LoggedInUserView getSuccess() {
-        return success;
-    }
-
-    @Nullable
-    Integer getError() {
-        return error;
+    @Override
+    protected Map<String, String> getParams() throws AuthFailureError {
+        return parameters;
     }
 }
